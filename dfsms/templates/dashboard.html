@@ -1,0 +1,144 @@
+{% extends "master.html" %}
+
+{% block title %}Index{% endblock %}
+      {% block content %}
+        <div class="hk-pg-wrapper">
+			<!-- Container -->
+            <div class="container-fluid mt-xl-50 mt-sm-30 mt-15">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hk-row">
+
+
+<div class="col-lg-3 col-md-6">
+<div class="card card-sm">
+<div class="card-body">
+<div class="d-flex justify-content-between mb-5">
+<div>
+<span class="d-block font-15 text-dark font-weight-500">Categories</span>
+</div>
+<div>
+</div>
+</div>
+<div class="text-center">
+<span class="d-block display-4 text-dark mb-5"><span class="counter-anim">{{countcategories}}</span></span>
+<small class="d-block">Listed Categories</small>
+</div>
+</div>
+</div>
+</div>
+							
+
+<div class="col-lg-3 col-md-6">
+<div class="card card-sm">
+<div class="card-body">
+<div class="d-flex justify-content-between mb-5">
+<div>
+<span class="d-block font-15 text-dark font-weight-500">Companies</span>
+</div>
+<div>
+</div>
+</div>
+
+<div class="text-center">
+<span class="d-block display-4 text-dark mb-5"><span class="counter-anim">{{countcompanies}}</span></span>
+<small class="d-block">Listed Companies</small>
+</div>
+</div>
+</div>
+</div>
+							
+<div class="col-lg-3 col-md-6">
+<div class="card card-sm">
+<div class="card-body">
+<div class="d-flex justify-content-between mb-5">
+<div>
+<span class="d-block font-15 text-dark font-weight-500">Products</span>
+</div>
+<div>
+</div>
+</div>
+<div class="text-center">
+<span class="d-block display-4 text-dark mb-5"><span class="counter-anim">{{countproducts}}</span></span>
+<small class="d-block">Listed Products</small>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-3 col-md-6">
+<div class="card card-sm">
+<div class="card-body">
+<div class="d-flex justify-content-between mb-5">
+<div>
+<span class="d-block font-15 text-dark font-weight-500">Total Sales</span>
+</div>
+<div>
+</div>
+</div>
+<div class="text-center">
+<span class="d-block display-4 text-dark mb-5"><span class="counter-anim">{{sales}}</span></span>
+<small class="d-block">Total sales till date</small>
+</div>
+</div>
+</div>
+</div>	
+
+<div class="col-lg-3 col-md-6">
+<div class="card card-sm">
+<div class="card-body">
+<div class="d-flex justify-content-between mb-5">
+<div>
+<span class="d-block font-15 text-dark font-weight-500">Last 7 Days Sales</span>
+</div>
+<div>
+</div>
+</div>
+<div class="text-center">
+<span class="d-block display-4 text-dark mb-5">{{last7days}}</span>
+<small class="d-block">Last 7 Days Total Sales</small>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-3 col-md-6">
+<div class="card card-sm">
+<div class="card-body">
+<div class="d-flex justify-content-between mb-5">
+<div>
+<span class="d-block font-15 text-dark font-weight-500">Today's Sales</span>
+</div>
+<div>
+</div>
+</div>
+<div class="text-center">
+<span class="d-block display-4 text-dark mb-5">{{todaysales}}</span>
+<small class="d-block">Today's Total Sales</small>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+					
+            </div>
+            {% endblock %}
+            <!-- /Container -->
+			
+            <!-- Footer -->
+            
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    
+</body>
+
+</html>

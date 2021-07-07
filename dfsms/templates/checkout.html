@@ -1,0 +1,178 @@
+{% extends "master.html" %}
+
+{% block title %}Index{% endblock %}
+      {% block content %}
+  <!-- Main Content -->
+  <div class="hk-pg-wrapper">
+    <!-- Breadcrumb -->
+    <nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent">
+<li class="breadcrumb-item"><a href="#">Search</a></li>
+<li class="breadcrumb-item active" aria-current="page">Product</li>
+        </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Title -->
+        <div class="hk-pg-header">
+            <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Shoping Cart</h4>
+        </div>
+        <!-- /Title -->
+
+        <!-- Row -->
+        <div class="row">
+            <div class="col-xl-12">
+                {% with messages = get_flashed_messages() %}
+ 
+                {% if messages %}
+        
+                {% for message in messages %}
+        
+                <div class="alert alert-danger alert-dismissable" role="alert">
+        
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        
+                        <span aria-hidden="true">x</span>
+        
+                    </button>
+        
+        
+                {{message}} 
+        
+        
+                </div>
+        
+        
+                {% endfor %}
+        
+                {% endif %}
+                {% endwith %}
+
+
+<form class="needs-validation" action="purchase" method="post" novalidate>
+
+<!--- Shopping Cart ---->
+<section class="hk-sec-wrapper">
+{% if checkout %}
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="table-wrap">
+<table id="datable_1" class="table table-hover w-100 display pb-30" border="1">
+<tbody>
+<tr>
+<th >Product Name</th>
+<th>Category</th>
+<th>Company</th>
+<th width="5%">Quantity</th>
+<th width="10%">Unit Price</th>
+<th width="10%">Price</th>
+<th width="5%">Remove</th>
+</tr>   
+
+   <input type="hidden" value="?>" name="">
+        <tr>
+        {% for row in checkout %}
+        <td>{{row.Product}}</td>
+        <td>{{row.Category}}</td>
+        <td>{{row.Company}}</td>
+        <td>{{row.quantity}}</td>
+        <td>{{row.Pricing}}</td>
+        <td>{{row.Pricing * row.quantity}}</td>
+        <td align="center"><a href="deleteCart/{{row.id}}" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a></td>
+         
+        </tr>
+        {%endfor%}  
+        
+
+<tr>
+<td colspan="3" align="right">Total:</td>
+<td colspan="2"></td>
+<td colspan=><strong>{{total}}</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>  
+
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Customer Name</label>
+<input type="text" class="form-control" id="validationCustom03" placeholder="Customer Name" name="customername" required>
+<div class="invalid-feedback">Please provide a valid customer name.</div>
+</div>
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Customer Mobile Number</label>
+<input type="text" class="form-control" id="validationCustom03" placeholder="Mobile Number" name="mobileno" required>
+<div class="invalid-feedback">Please provide a valid mobile number.</div>
+</div>
+</div>
+
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Payment Mode</label>
+<div class="custom-control custom-radio mb-10">
+<input type="radio" class="custom-control-input" id="customControlValidation2" name="paymentmode" value="cash" required>
+<label class="custom-control-label" for="customControlValidation2">Cash</label>
+</div>
+<div class="custom-control custom-radio mb-10">
+<input type="radio" class="custom-control-input" id="customControlValidation3" name="paymentmode" value="card" required>
+<label class="custom-control-label" for="customControlValidation3">Card</label>
+</div>
+</div>
+<div class="col-md-6 mb-10">
+<button class="btn btn-primary" type="submit" name="checkout">Checkout</button>
+</div>
+</div>
+</form>
+
+{% else %}
+
+<div style="color:red" align="center">Your Cart is Empty</div>
+</div>
+</div></div></section>
+{%endif%}
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+            {% endblock %}
+            <!-- /Container -->
+			
+            <!-- Footer -->
+            
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    <style type="text/css">
+        #btnEmpty {
+    background-color: #ffffff;
+    border: #d00000 1px solid;
+    padding: 5px 10px;
+    color: #d00000;
+    float: right;
+    text-decoration: none;
+    border-radius: 3px;
+    margin: 10px 0px;
+}
+
+    </style>  
+    
+</body>
+
+</html>
+
+

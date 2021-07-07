@@ -1,0 +1,118 @@
+{% extends "master.html" %}
+
+{% block title %}Index{% endblock %}
+      {% block content %}
+<!-- Main Content -->
+<div class="hk-pg-wrapper">
+    <!-- Breadcrumb -->
+    <nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent">
+<li class="breadcrumb-item"><a href="#">Invoice</a></li>
+<li class="breadcrumb-item active" aria-current="page">View</li>
+        </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Title -->
+<div class="hk-pg-header">
+<h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="file"></i></span></span>View Invoice</h4>
+        </div>
+        <!-- /Title -->
+
+        <!-- Row -->
+        <div class="row">
+            <div class="col-xl-12">
+
+
+<section class="hk-sec-wrapper hk-invoice-wrap pa-35">
+                    <div class="invoice-from-wrap">
+                        <div class="row">
+                            <div class="col-md-7 mb-20">
+<h3 class="mb-35 font-weight-600">     DFSMS </h3>
+<h6 class="mb-5">Dairy Farm Shop Management System</h6>
+</div>
+
+
+<div class="col-md-5 mb-20">
+<h4 class="mb-35 font-weight-600">Invoice / Receipt</h4>
+<span class="d-block">Date:<span class="pl-10 text-dark">{{customer.postingDate}}</span></span>
+<span class="d-block">Invoice / Receipt <span class="pl-10 text-dark">{{customer.orderID}}</span></span>
+<span class="d-block">Customer <span class="pl-10 text-dark">{{customer.Name}}</span></span>
+<span class="d-block">Customer Mobile No<span class="pl-10 text-dark">{{customer.contact}}</span></span>
+<span class="d-block">Payment Mode <span class="pl-10 text-dark">{{customer.paymentMode}}</span></span>
+</div>
+</div>
+</div>
+<hr class="mt-0">
+                
+                  
+               
+<div class="row">
+<div class="col-sm">
+<div class="table-wrap">
+<table class="table mb-0" border="1">
+<thead>
+<tr>
+<th>#</th>
+<th >Product Name</th>
+<th>Category</th>
+<th>Company</th>
+<th width="5%">Quantity</th>
+<th width="10%">Unit Price</th>
+<th width="10%">Price</th>
+
+</tr>
+                                    </thead>
+                                    <tbody>
+{% for rows in orders %}                                        
+<tr>
+<td>{{rows.id}}</td>
+<td>{{rows.productName}}</td>
+<td>{{rows.category}}</td>
+<td>{{rows.company}}</td>
+<td>{{rows.quantity}}</td>
+<td>{{rows.unitPrice}}</td>
+<td>{{rows.quantity * rows.unitPrice}}</td>
+</tr>
+{%endfor%}
+
+<tr>
+<th colspan="6" style="text-align:center; font-size:20px;">Total </th> 
+<th style="text-align:left; font-size:20px;">{{total}}</th>   
+
+</tr>                                              
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+        <!-- /Row -->
+
+    </div>
+    <!-- /Container -->
+
+            {% endblock %}
+            <!-- /Container -->
+			
+            <!-- Footer -->
+            
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    
+</body>
+
+</html>
+

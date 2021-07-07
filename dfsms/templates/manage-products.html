@@ -1,0 +1,116 @@
+{% extends "master.html" %}
+
+{% block title %}Index{% endblock %}
+      {% block content %}
+<!-- Main Content -->
+<div class="hk-pg-wrapper">
+    <!-- Breadcrumb -->
+    <nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent">
+<li class="breadcrumb-item"><a href="#">Product</a></li>
+<li class="breadcrumb-item active" aria-current="page">Manage</li>
+        </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Title -->
+<div class="hk-pg-header">
+<h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>Manage Products</h4>
+        </div>
+        <!-- /Title -->
+
+        <!-- Row -->
+        <div class="row">
+            <div class="col-xl-12">
+                <section class="hk-sec-wrapper">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="table-wrap">
+                                {% with messages = get_flashed_messages() %}
+ 
+                                {% if messages %}
+                        
+                                {% for message in messages %}
+                        
+                                <div class="alert alert-success alert-dismissable" role="alert">
+                        
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        
+                                        <span aria-hidden="true">x</span>
+                        
+                                    </button>
+                        
+                        
+                                {{message}}
+                        
+                        
+                                </div>
+                        
+                        
+                                {% endfor %}
+                        
+                                {% endif %}
+                                {% endwith %}
+                                <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Category</th>
+                                            <th>Company</th>
+                                            <th>Product</th>
+                                            <th>Pricing</th>
+                                            <th>Posting Date</th>
+                                            <th>Action</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+ {%for row in all_Category%}                                       
+<tr>
+<td>{{row.id}}</td>
+<td>{{row.Category}}</td>
+<td>{{row.Company}}</td>
+<td>{{row.Product}}</td>
+<td>{{row.Pricing}}</td>
+<td>{{row.PostingDate}}</td>
+<td>
+<a href="editProduct/{{row.id}}" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i></a>
+<a href="deleteProduct/{{row.id}}" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Do you really want to delete?');"> <i class="icon-trash txt-danger"></i> </a>
+</td>
+</tr>
+{%endfor%}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+        <!-- /Row -->
+
+    </div>
+    <!-- /Container -->
+            {% endblock %}
+            <!-- /Container -->
+			
+            <!-- Footer -->
+            
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    
+</body>
+
+</html>
+

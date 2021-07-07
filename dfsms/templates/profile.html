@@ -1,0 +1,125 @@
+{% extends "master.html" %}
+
+{% block title %}Index{% endblock %}
+      {% block content %}
+        <!-- Main Content -->
+        <div class="hk-pg-wrapper">
+            <!-- Breadcrumb -->
+            <nav class="hk-breadcrumb" aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-light bg-transparent">
+<li class="breadcrumb-item"><a href="#">Profile</a></li>
+<li class="breadcrumb-item active" aria-current="page">Admin</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
+
+            <!-- Container -->
+            <div class="container">
+                <!-- Title -->
+                <div class="hk-pg-header">
+                    <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Update Admin Profile</h4>
+                </div>
+                <!-- /Title -->
+
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12">
+<section class="hk-sec-wrapper">
+
+<div class="row">
+<div class="col-sm">
+    {% with messages = get_flashed_messages() %}
+ 
+    {% if messages %}
+
+    {% for message in messages %}
+
+    <div class="alert alert-success alert-dismissable" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+
+            <span aria-hidden="true">x</span>
+
+        </button>
+
+
+    {{message}}
+
+
+    </div>
+
+
+    {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+<form class="needs-validation" action ="updateprofile" method="POST"  novalidate>
+   
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03"> Last Updation Date</label> {{data.UpdationDate}}
+</div>
+</div>
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03"> Name</label>
+<input type="text" class="form-control" id="validationCustom03" value="{{data.AdminName}}" name="adminname" required>
+<div class="invalid-feedback">Please provide a valid  name.</div>
+</div>
+</div>
+
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03"> Username</label>
+<input type="text" class="form-control" id="validationCustom03" value="{{data.UserName}}" name="username" readonly>
+</div>
+</div>
+
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Email id</label>
+<input type="text" class="form-control" id="validationCustom03" value="{{data.Email}}" name="emailid" required>
+<div class="invalid-feedback">Please provide a valid  Email id.</div>
+</div>
+</div>
+
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03"> Mobile Number</label>
+<input type="text" class="form-control" id="validationCustom03" value="{{data.MobileNumber}}" name="mobilenumber" required>
+<div class="invalid-feedback">Please provide a valid  mobile number.</div>
+</div>
+</div>
+
+
+
+                                 
+<input type="submit" class="btn btn-primary" value="update">
+</form>
+</div>
+</div>
+</section>
+                     
+</div>
+</div>
+</div>
+
+
+            {% endblock %}
+            <!-- /Container -->
+			
+            <!-- Footer -->
+            
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    
+</body>
+
+</html>
+

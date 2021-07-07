@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>{% block title %} {% endblock %}</title>
+    <link href="{{url_for('static',filename='vendors/vectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{url_for('static',filename='vendors/jquery-toggles/css/toggles.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static',filename='vendors/jquery-toggles/css/themes/toggles-light.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static',filename='vendors/jquery-toast-plugin/dist/jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static',filename='dist/css/style.css')}}" rel="stylesheet" type="text/css">
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    
+	
+	<!-- HK Wrapper -->
+	<div class="hk-wrapper hk-vertical-nav">
+        <!-- top navigation-->
+        <nav class="navbar navbar-expand-xl navbar-light fixed-top hk-navbar" style="height:60px;">
+            <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><i class="ion ion-ios-menu"></i></a>
+            <a class="navbar-brand" href="{{url_for('dashboard')}}">DFSMS
+            </a>
+            <ul class="navbar-nav hk-navbar-content">
+        
+                <li class="nav-item dropdown dropdown-authentication">
+                    <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="media">
+                            <div class="media-img-wrap">
+                                <div class="avatar">
+                                    <img src="{{url_for('static',filename='dist/img/user.png')}}" alt="user" class="avatar-img rounded-circle">
+                                </div>
+                                <span class="badge badge-success badge-indicator"></span>
+                            </div>
+        
+                            <div class="media-body">
+                                <span><i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+                        <a class="dropdown-item" href="{{url_for('profile')}}"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
+                        <a class="dropdown-item" href="{{url_for('changePassword')}}"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>
+                        <div class="dropdown-divider"></div>
+                        <div class="sub-dropdown-menu show-on-hover">
+                            <a href="#" class="dropdown-toggle dropdown-item no-caret"><i class="zmdi zmdi-check text-success"></i>Online</a>
+                      
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="logout"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <nav class="hk-nav hk-nav-light">
+            <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i data-feather="x"></i></span></a>
+            <div class="nicescroll-bar">
+                <div class="navbar-nav-wrap">
+                    <ul class="navbar-nav flex-column">
+
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('dashboard')}}">
+<i class="ion ion-ios-keypad"></i>
+<span class="nav-link-text">Dashboard</span>
+</a>
+</li>
+
+                          
+<li class="nav-item">
+<a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#cats_drp">
+<i class="ion ion-ios-copy"></i>
+<span class="nav-link-text">Category</span></a>
+<ul id="cats_drp" class="nav flex-column collapse collapse-level-1">
+<li class="nav-item">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('addCategory')}}">Add</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('manageCategories')}}">Manage</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#company_drp">
+<i class="ion ion-ios-copy"></i>
+<span class="nav-link-text">Company</span></a>
+<ul id="company_drp" class="nav flex-column collapse collapse-level-1">
+<li class="nav-item">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('addCompany')}}">Add</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('manageCompanies')}}">Manage</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#product_drp">
+<i class="ion ion-ios-list-box"></i>
+<span class="nav-link-text">Product</span></a>
+<ul id="product_drp" class="nav flex-column collapse collapse-level-1">
+<li class="nav-item">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('addProduct')}}">Add</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('manageProducts')}}">Manage</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#sell_drp">
+    <i class="glyphicon glyphicon-search"></i>
+    <span class="nav-link-text">Sell Product</span></a>
+    <ul id="sell_drp" class="nav flex-column collapse collapse-level-1">
+    <li class="nav-item">
+    <ul class="nav flex-column">
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('searchProduct')}}">Search Product</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="{{url_for('checkout')}}">Checkout</a>
+    </li>
+    </ul>
+    </li>
+    </ul>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('invoices')}}">
+<i class="ion ion-ios-list-box"></i>
+<span class="nav-link-text">Invoices</span>
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#reports_drp">
+<i class="ion ion-ios-today"></i>
+<span class="nav-link-text">Reports</span></a>
+<ul id="reports_drp" class="nav flex-column collapse collapse-level-1">
+<li class="nav-item">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('bwdateReportDs')}}">B/w Dates</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{url_for('salesReportDs')}}">Sales</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+                 
+                      
+                      
+                      
+                  
+                
+                    <hr class="nav-separator">
+            
+                </div>
+            </div>
+        </nav>
+
+       
+        <!-- /Vertical Nav -->
+        <!-- Main Content -->
+        {% block content %}
+        
+        {% endblock %}
+
+            <!-- /Main Content -->
+			
+        
+        
+            <!-- Footer -->
+            {% block footer %}
+            <div class="hk-footer-wrap container">
+                <footer class="footer">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+<p>Developed By NAEEM AHMED  ©2021</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            {% endblock %}
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    
+    <script src="{{url_for('static',filename='vendors/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/popper.js/dist/umd/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='dist/js/jquery.slimscroll.js')}}"></script>
+    <script src="{{url_for('static',filename='dist/js/dropdown-bootstrap-extended.js')}}"></script>
+    <script src="{{url_for('static',filename='dist/js/feather.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/jquery-toggles/toggles.min.js')}}"></script>
+    <script src="{{url_for('static',filename='dist/js/toggle-data.js')}}"></script>
+	<script src="{{url_for('static',filename='vendors/waypoints/lib/jquery.waypoints.min.js')}}"></script>
+	<script src="{{url_for('static',filename='vendors/jquery.counterup/jquery.counterup.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/jquery.sparkline/dist/jquery.sparkline.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/vectormap/jquery-jvectormap-2.0.3.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+	<script src="{{url_for('static',filename='dist/js/vectormap-data.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/owl.carousel/dist/owl.carousel.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/jquery-toast-plugin/dist/jquery.toast.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/apexcharts/dist/apexcharts.min.js')}}"></script>
+	<script src="{{url_for('static',filename='dist/js/irregular-data-series.js')}}"></script>
+    <script src="{{url_for('static',filename='dist/js/init.js')}}"></script>
+    
+</body>
+
+</html>

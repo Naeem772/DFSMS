@@ -1,0 +1,165 @@
+{% extends "master.html" %}
+
+{% block title %}Index{% endblock %}
+
+      {% block content %}
+  <!-- Main Content -->
+  <div class="hk-pg-wrapper">
+    <!-- Breadcrumb -->
+    <nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent">
+<li class="breadcrumb-item"><a href="#">Search</a></li>
+<li class="breadcrumb-item active" aria-current="page">Product</li>
+        </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Title -->
+        <div class="hk-pg-header">
+            <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span>Search Product</h4>
+        </div>
+        <!-- /Title -->
+
+        <!-- Row -->
+        <div class="row">
+            <div class="col-xl-12">
+
+<section class="hk-sec-wrapper">
+
+<div class="row">
+<div class="col-sm">
+<form class="needs-validation" action="searchBuy" method="POST" novalidate>
+                               
+<div class="form-row">
+<div class="col-md-6 mb-10">
+<label for="validationCustom03">Product Name</label>
+<input type="text" class="form-control" id="validationCustom03" placeholder="Product Name" name="productname" required>
+<div class="invalid-feedback">Please provide a valid product name.</div>
+</div>
+</div>
+
+                         
+<button class="btn btn-primary" type="submit" name="search">search</button>
+</form>
+</div>
+</div>
+</section>
+<!--code for search result -->
+{% with messages = get_flashed_messages() %}
+ 
+                                {% if messages %}
+                        
+                                {% for message in messages %}
+                        
+                                <div class="alert alert-success alert-dismissable" role="alert">
+                        
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        
+                                        <span aria-hidden="true">x</span>
+                        
+                                    </button>
+                        
+                        
+                                {{message}} <a href="checkout">Checkout</a>
+                        
+                        
+                                </div>
+                        
+                        
+                                {% endfor %}
+                        
+                                {% endif %}
+                                {% endwith %}
+                              
+<section class="hk-sec-wrapper">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="table-wrap">
+                                <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Category</th>
+                                            <th>Company</th>
+                                            <th>Product</th>
+                                            <th>Pricing</th>
+                                            <th>Quantity</th>
+                                            <th>Action</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+<form method="POST" action="addToCart">                                                  
+{%for AddCart in Search_Product %}
+<tr>
+<td hidden><input type="text" value="{{AddCart.id}}" name="cartid" style="width: 50px; border: hidden;"/></td>
+<td>{{AddCart.id}}</td>
+<td>{{AddCart.Category}}</td>
+<td>{{AddCart.Company}}</td>
+<td>{{AddCart.Product}}</td>
+<td>{{AddCart.Pricing}}</td>
+<td><input type="text" class="product-quantity" name="quantity" value="1" size="2" /></td>
+<td>
+<input type="submit" class="btn btn-success btn-block" value="Add to Cart">
+</td>
+</tr>
+{%endfor%}
+</form>
+
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+</section>
+             
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+            {% endblock %}
+            <!-- /Container -->
+			
+            <!-- Footer -->
+            
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    <style type="text/css">
+        #btnEmpty {
+    background-color: #ffffff;
+    border: #d00000 1px solid;
+    padding: 5px 10px;
+    color: #d00000;
+    float: right;
+    text-decoration: none;
+    border-radius: 3px;
+    margin: 10px 0px;
+}
+
+    </style>  
+    
+    
+</body>
+
+</html>
+
+
